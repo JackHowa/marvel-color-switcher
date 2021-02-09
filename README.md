@@ -1,6 +1,6 @@
 # Marvel Color Switcher
 
-- Inspired by https://epicreact.dev/css-variables/
+- Inspired by https://epicreact.dev/css-variables/ (code sandbox https://df90h.csb.app/)
 
 ## pt 1 Goals
 
@@ -31,9 +31,9 @@ yellows
 #b97d10
 
 https://colorswall.com/palette/3128/
-https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=aa0505&secondary.color=fbca03 
+https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=aa0505&secondary.color=fbca03
 
-### Captain America 
+### Captain America
 
 #0000ff
 #002d5c
@@ -41,4 +41,4 @@ https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=a
 #a5a5ab
 #f0f0f0
 
-https://www.color-hex.com/color-palette/20730 
+https://www.color-hex.com/color-palette/20730
