@@ -4,13 +4,18 @@ import styled from 'styled-components'
 
 const ThemeContainer = styled.div({
   padding: 20,
-  backgroundColor: 'var(--colors-background)',
+  backgroundColor: 'var(--colors-secondary)',
   // for light/dark mode of the color of text
   color: '#fff'
 })
 
 const PrimaryTextContainer = styled.div({
   backgroundColor: 'var(--colors-primary)',
+})
+
+const PrimaryText = styled.h1({
+  fontSize: "10vw",
+  textAlign: 'center',
 })
 
 const SUPER_HERO_OPTIONS = [
@@ -46,9 +51,9 @@ function SuperHeroDisplayText({ targetSuperHeroID }) {
   return (
     <ThemeContainer>
       <PrimaryTextContainer>
-        <h1>
+        <PrimaryText>
           {SUPER_HERO_OPTIONS.find(({ id }) => targetSuperHeroID === id).headline}
-        </h1>
+        </PrimaryText>
       </PrimaryTextContainer>
     </ThemeContainer>
   )

@@ -1,9 +1,9 @@
 body[data-theme="iron-man"] {
   --colors-primary: #fbca03;
-  --colors-background: #aa0505;
+  --colors-secondary: #aa0505;
 }
 
 body[data-theme="captain-america"] {
   --colors-primary: #0000ff;
-  --colors-background: #870000;
+  --colors-secondary: #870000;
 }
