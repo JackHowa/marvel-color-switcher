@@ -2,10 +2,15 @@ import * as React from 'react'
 import './vars.css'
 import styled from 'styled-components'
 
-const PrimaryText = styled.div({
+const ThemeContainer = styled.div({
   padding: 20,
-  color: 'var(--colors-primary)',
   backgroundColor: 'var(--colors-background)',
+  // for light/dark mode of the color of text
+  color: '#fff'
+})
+
+const PrimaryTextContainer = styled.div({
+  backgroundColor: 'var(--colors-primary)',
 })
 
 const SUPER_HERO_OPTIONS = [
@@ -39,9 +44,13 @@ function SuperHeroDisplayText({ targetSuperHeroID }) {
 
   // todo: primary text still re-renders if the super hero id changes
   return (
-    <PrimaryText>
-      {SUPER_HERO_OPTIONS.find(({ id }) => targetSuperHeroID === id).headline}
-    </PrimaryText>
+    <ThemeContainer>
+      <PrimaryTextContainer>
+        <h1>
+          {SUPER_HERO_OPTIONS.find(({ id }) => targetSuperHeroID === id).headline}
+        </h1>
+      </PrimaryTextContainer>
+    </ThemeContainer>
   )
 }
 
