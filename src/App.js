@@ -4,32 +4,54 @@ import styled from 'styled-components'
 
 const PrimaryText = styled.div({
   padding: 20,
-  color: 'var(--colors-primary, black)',
+  color: 'var(--colors-primary)',
   backgroundColor: 'var(--colors-background)',
 })
 
-function ThemeToggler() {
-  const [theme, setTheme] = React.useState('light')
-  const nextTheme = theme === 'light' ? 'dark' : 'light'
+const SUPER_HERO_OPTIONS = [
+  {
+    id: 'iron-man',
+    headline: 'Iron Man'
+  },
+  {
+    id: 'captain-america',
+    headline: 'Captain America'
+  }
+]
 
-  React.useEffect(() => {
-    document.body.dataset.theme = theme
-  }, [theme])
-
+function ThemeToggler({ setSuperHeroID }) {
+  // should not update each change of pick
   return (
-    <button onClick={() => setTheme(nextTheme)}>
-      Change to {nextTheme} mode
-    </button>
+    SUPER_HERO_OPTIONS.map(({ id, headline }) => {
+      return (
+        <button key={id} onClick={() => setSuperHeroID(id)}>
+          Change to {headline} mode
+        </button>
+      )
+    })
+  )
+}
+
+function SuperHeroDisplayText({ targetSuperHeroID }) {
+  React.useEffect(() => {
+    document.body.dataset.theme = targetSuperHeroID
+  }, [targetSuperHeroID])
+
+  // todo: primary text still re-renders if the super hero id changes
+  return (
+    <PrimaryText>
+      {SUPER_HERO_OPTIONS.find(({ id }) => targetSuperHeroID === id).headline}
+    </PrimaryText>
   )
 }
 
 function App() {
+  const [targetSuperHeroID, setSuperHeroID] = React.useState('iron-man')
+
   return (
     <div className="App">
-      <PrimaryText>
-        Iron Man
-      </PrimaryText>
-      <ThemeToggler />
+      <SuperHeroDisplayText targetSuperHeroID={targetSuperHeroID} />
+      <ThemeToggler setSuperHeroID={setSuperHeroID} />
     </div>
   );
 }
