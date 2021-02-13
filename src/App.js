@@ -2,6 +2,8 @@ import * as React from 'react'
 import './vars.css'
 import styled from 'styled-components'
 
+// todo: possibly use an api for all heroes
+// todo: at least move to another file
 const SUPER_HERO_OPTIONS = [
   {
     id: 'iron-man',
@@ -13,11 +15,12 @@ const SUPER_HERO_OPTIONS = [
   }
 ]
 
+// setting up app state and dispatcher context
 const AppStateContext = React.createContext()
 const AppDispatchContext = React.createContext()
 
+// reducer pattern for updating state
 function appReducer(state, action) {
-  // console.log(state, action)
   switch (action.type) {
     case 'UPDATE_SUPER_HERO': {
       return { ...state, superHeroID: action.id }
@@ -29,10 +32,12 @@ function appReducer(state, action) {
 }
 
 function AppProvider({ children }) {
+  // sets default to be iron man
   const [state, dispatch] = React.useReducer(appReducer, {
     superHeroID: 'iron-man',
   })
-  // console.log(state, 'initial state')
+
+  // sets provider for dispatch and the state
   return (
     <AppStateContext.Provider value={state}>
       <AppDispatchContext.Provider value={dispatch}>
@@ -43,6 +48,7 @@ function AppProvider({ children }) {
 }
 
 
+// custom hooks for context
 function useAppState() {
   const context = React.useContext(AppStateContext)
   if (!context) {
@@ -59,6 +65,7 @@ function useAppDispatch() {
   return context
 }
 
+// styled components taking in global var theme
 let ThemeContainer = styled.div({
   padding: 20,
   backgroundColor: 'var(--colors-secondary)',
@@ -66,6 +73,8 @@ let ThemeContainer = styled.div({
   color: '#fff'
 })
 
+// memoizing container so hopefully doesn't rerender
+// currently children are forcing re-render
 ThemeContainer = React.memo(ThemeContainer)
 
 const PrimaryTextContainer = styled.div({
@@ -79,9 +88,6 @@ const PrimaryText = styled.h1({
 
 function ThemeToggler() {
   const dispatch = useAppDispatch()
-
-  // console.log(dispatch)
-
 
   // should not update each change of pick
   return (
@@ -100,9 +106,7 @@ function ThemeToggler() {
 
 function SuperHeroDisplayText() {
   const state = useAppState()
-  // console.log(state, 'all state')
   const targetSuperHeroID = state.superHeroID
-  // console.log(targetSuperHeroID)
 
   React.useEffect(() => {
     document.body.dataset.theme = targetSuperHeroID
@@ -128,7 +132,6 @@ function App() {
         <ThemeToggler />
       </div>
     </AppProvider>
-
   );
 }
 
