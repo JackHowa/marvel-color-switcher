@@ -17,7 +17,7 @@ const AppStateContext = React.createContext()
 const AppDispatchContext = React.createContext()
 
 function appReducer(state, action) {
-  console.log(state, action)
+  // console.log(state, action)
   switch (action.type) {
     case 'UPDATE_SUPER_HERO': {
       return { ...state, superHeroID: action.id }
@@ -32,7 +32,7 @@ function AppProvider({ children }) {
   const [state, dispatch] = React.useReducer(appReducer, {
     superHeroID: 'iron-man',
   })
-  console.log(state, 'initial state')
+  // console.log(state, 'initial state')
   return (
     <AppStateContext.Provider value={state}>
       <AppDispatchContext.Provider value={dispatch}>
@@ -80,7 +80,7 @@ const PrimaryText = styled.h1({
 function ThemeToggler() {
   const dispatch = useAppDispatch()
 
-  console.log(dispatch)
+  // console.log(dispatch)
 
 
   // should not update each change of pick
@@ -100,9 +100,9 @@ function ThemeToggler() {
 
 function SuperHeroDisplayText() {
   const state = useAppState()
-  console.log(state, 'all state')
+  // console.log(state, 'all state')
   const targetSuperHeroID = state.superHeroID
-  console.log(targetSuperHeroID)
+  // console.log(targetSuperHeroID)
 
   React.useEffect(() => {
     document.body.dataset.theme = targetSuperHeroID
