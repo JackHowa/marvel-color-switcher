@@ -4,9 +4,9 @@
 
 ## pt 1 Goals
 
-- [ ] Click to switch between characters
-- [ ] Change color on character switch using CSS Variables
-- [ ] Change content as well without url change of character bio
+- [x] Click to switch between characters
+- [x] Change color on character switch using CSS Variables
+- [x] Change content as well without url change of character bio
 - [ ] Maybe change font and other styles as well
 - [ ] Make sure color contrast of wild marvel colors are still accessible with Google Material Color picker ;)
 
