@@ -70,15 +70,19 @@ const ThemeContainer = styled.div({
   padding: 20,
   backgroundColor: 'var(--colors-secondary)',
   // for light/dark mode of the color of text
-  color: '#fff'
+  color: '#fff',
+  height: "70vh",
+  display: "flex"
 })
 
 const PrimaryTextContainer = styled.div({
+  alignSelf: 'center',
   backgroundColor: 'var(--colors-primary)',
+  width: '100%'
 })
 
 const PrimaryText = styled.h1({
-  fontSize: "10vw",
+  fontSize: "10vmax",
   textAlign: 'center',
 })
 
