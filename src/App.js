@@ -73,10 +73,6 @@ let ThemeContainer = styled.div({
   color: '#fff'
 })
 
-// memoizing container so hopefully doesn't rerender
-// currently children are forcing re-render
-ThemeContainer = React.memo(ThemeContainer)
-
 const PrimaryTextContainer = styled.div({
   backgroundColor: 'var(--colors-primary)',
 })
@@ -112,12 +108,19 @@ function SuperHeroDisplayText() {
     document.body.dataset.theme = targetSuperHeroID
   }, [targetSuperHeroID])
 
-  // todo: primary text still re-renders if the super hero id changes
+  return (
+    <>
+      {SUPER_HERO_OPTIONS.find(({ id }) => targetSuperHeroID === id).headline}
+    </>
+  )
+}
+
+function SuperHeroDisplayTextContainer() {
   return (
     <ThemeContainer>
       <PrimaryTextContainer>
         <PrimaryText>
-          {SUPER_HERO_OPTIONS.find(({ id }) => targetSuperHeroID === id).headline}
+          <SuperHeroDisplayText />
         </PrimaryText>
       </PrimaryTextContainer>
     </ThemeContainer>
@@ -128,7 +131,7 @@ function App() {
   return (
     <AppProvider>
       <div className="App">
-        <SuperHeroDisplayText />
+        <SuperHeroDisplayTextContainer />
         <ThemeToggler />
       </div>
     </AppProvider>
