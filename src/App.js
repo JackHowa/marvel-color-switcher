@@ -66,7 +66,7 @@ function useAppDispatch() {
 }
 
 // styled components taking in global var theme
-let ThemeContainer = styled.div({
+const ThemeContainer = styled.div({
   padding: 20,
   backgroundColor: 'var(--colors-secondary)',
   // for light/dark mode of the color of text
