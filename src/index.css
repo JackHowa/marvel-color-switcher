@@ -1,6 +1,7 @@
 @font-face {
   font-family: 'Bebas Neue';
   src: local('Bebas Neue'), url(./fonts/BebasNeue-Regular.ttf) format('opentype');
+  font-display: swap;
 }
 
 body {
@@ -10,3 +11,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+button { 
+  /* minimums per lighthouse mobile friendly https://web.dev/tap-targets/ */
+  min-width: 48px;
+  min-height: 48px;
+  margin: 8px;
+}
