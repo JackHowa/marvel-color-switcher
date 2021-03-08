@@ -8,7 +8,12 @@
 - [x] Change color on character switch using CSS Variables
 - [x] Change content as well without url change of character bio
 - [ ] Maybe change font and other styles as well
-- [ ] Make sure color contrast of wild marvel colors are still accessible with Google Material Color picker ;)
+- [x] Make sure color contrast of wild marvel colors are still accessible with Google Material Color picker ;) -> somewhat better with lighthouse
+
+## pt form picker react-hook-form context
+
+- [ ] Update button using v7 of react-hook-form
+- [ ] Use form context to submit the form change separate from the inputs (mostly unnecessary but poc)
 
 ## Reach Goals
 
