@@ -91,12 +91,10 @@ function ThemeToggler() {
   const dispatch = useAppDispatch()
   const { register, handleSubmit } = useForm();
 
-  const onSubmit = data => {
-    dispatch({
-      type: 'UPDATE_SUPER_HERO',
-      id: data.theme
-    })
-  };
+  const onSubmit = data => dispatch({
+    type: 'UPDATE_SUPER_HERO',
+    id: data.theme
+  })
 
   // should not update each change of pick
   return (
