@@ -12,7 +12,7 @@
 
 ## pt form picker react-hook-form context
 
-- [ ] Update button using v7 of react-hook-form
+- [x] Update button using v7 of react-hook-form
 - [ ] Use form context to submit the form change separate from the inputs (mostly unnecessary but poc)
 
 ## Reach Goals

@@ -1,6 +1,7 @@
 import * as React from 'react'
 import './vars.css'
 import styled from 'styled-components'
+import { useForm } from "react-hook-form";
 
 // todo: possibly use an api for all heroes
 // todo: at least move to another file
@@ -88,19 +89,27 @@ const PrimaryText = styled.h1({
 
 function ThemeToggler() {
   const dispatch = useAppDispatch()
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = data => {
+    dispatch({
+      type: 'UPDATE_SUPER_HERO',
+      id: data.theme
+    })
+  };
 
   // should not update each change of pick
   return (
-    SUPER_HERO_OPTIONS.map(({ id, headline }) => {
-      return (
-        <button key={id} onClick={() => dispatch({
-          type: 'UPDATE_SUPER_HERO',
-          id
-        })}>
-          Change to {headline} mode
-        </button>
-      )
-    })
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <select {...register("theme")}>
+        {SUPER_HERO_OPTIONS.map(({ id, headline }) => {
+          return (
+            <option value={id}>{headline}</option>
+          )
+        })}
+      </select>
+      <input type="submit" />
+    </form>
   )
 }
 
