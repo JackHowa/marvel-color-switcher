@@ -1,19 +1,9 @@
 import * as React from 'react'
 import './vars.css'
 import styled from 'styled-components'
+import ThemeToggler from './ThemeToggle'
+import { SUPER_HERO_OPTIONS } from './constants'
 
-// todo: possibly use an api for all heroes
-// todo: at least move to another file
-const SUPER_HERO_OPTIONS = [
-  {
-    id: 'iron-man',
-    headline: 'Iron Man'
-  },
-  {
-    id: 'captain-america',
-    headline: 'Captain America'
-  }
-]
 
 // setting up app state and dispatcher context
 const AppStateContext = React.createContext()
@@ -57,7 +47,7 @@ function useAppState() {
   return context
 }
 
-function useAppDispatch() {
+export function useAppDispatch() {
   const context = React.useContext(AppDispatchContext)
   if (!context) {
     throw new Error('useAppDispatch must be used within the AppProvider')
@@ -86,23 +76,6 @@ const PrimaryText = styled.h1({
   textAlign: 'center',
 })
 
-function ThemeToggler() {
-  const dispatch = useAppDispatch()
-
-  // should not update each change of pick
-  return (
-    SUPER_HERO_OPTIONS.map(({ id, headline }) => {
-      return (
-        <button key={id} onClick={() => dispatch({
-          type: 'UPDATE_SUPER_HERO',
-          id
-        })}>
-          Change to {headline} mode
-        </button>
-      )
-    })
-  )
-}
 
 function SuperHeroDisplayText() {
   const state = useAppState()
