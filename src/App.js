@@ -104,7 +104,7 @@ function ThemeToggler() {
       <select {...register("theme")}>
         {SUPER_HERO_OPTIONS.map(({ id, headline }) => {
           return (
-            <option value={id}>{headline}</option>
+            <option key={id} value={id}>{headline}</option>
           )
         })}
       </select>
