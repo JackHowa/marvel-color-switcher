@@ -101,7 +101,8 @@ function ThemeToggler() {
   // should not update each change of pick
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <select {...register("theme")}>
+      <label for="theme">Super hero theme</label>
+      <select id="theme" {...register("theme")}>
         {SUPER_HERO_OPTIONS.map(({ id, headline }) => {
           return (
             <option key={id} value={id}>{headline}</option>

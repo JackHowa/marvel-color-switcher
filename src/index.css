@@ -1,17 +1,20 @@
 @font-face {
-  font-family: 'Bebas Neue';
-  src: local('Bebas Neue'), url(./fonts/BebasNeue-Regular.ttf) format('opentype');
+  font-family: "Bebas Neue";
+  src: local("Bebas Neue"),
+    url(./fonts/BebasNeue-Regular.ttf) format("opentype");
   font-display: swap;
 }
 
 body {
-  font-family: 'Bebas Neue', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Bebas Neue", -apple-system, BlinkMacSystemFont, sans-serif;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-button { 
+select,
+button,
+input {
   /* minimums per lighthouse mobile friendly https://web.dev/tap-targets/ */
   min-width: 48px;
   min-height: 48px;
