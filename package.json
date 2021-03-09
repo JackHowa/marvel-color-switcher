@@ -1,5 +1,6 @@
 {
   "name": "marvel-color-switcher",
+  "description": "Update title and colors minimizing re-renders",
   "version": "0.2.0",
   "license": "MIT",
   "dependencies": {
