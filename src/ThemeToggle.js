@@ -1,10 +1,11 @@
-import { useForm } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 import { useAppDispatch } from './App';
-import { SUPER_HERO_OPTIONS } from './constants'
+import SelectHeroInput from './SelectHeroInput';
 
 function ThemeToggler() {
+  // take dispatch method from App.js
   const dispatch = useAppDispatch()
-  const { register, handleSubmit } = useForm();
+  const methods = useForm();
 
   const onSubmit = data => dispatch({
     type: 'UPDATE_SUPER_HERO',
@@ -12,18 +13,14 @@ function ThemeToggler() {
   })
 
   // should not update each change of pick
+  // nested select hero input can access rhf methods
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <label htmlFor="theme">Super hero theme</label>
-      <select id="theme" {...register("theme")}>
-        {SUPER_HERO_OPTIONS.map(({ id, headline }) => {
-          return (
-            <option key={id} value={id}>{headline}</option>
-          )
-        })}
-      </select>
-      <input type="submit" />
-    </form>
+    <FormProvider {...methods}>
+      <form onSubmit={methods.handleSubmit(onSubmit)}>
+        <SelectHeroInput />
+        <input type="submit" />
+      </form>
+    </FormProvider>
   )
 }
 
