@@ -10,6 +10,11 @@
     content="Marvel color switcher dynamically using react and styled components and css variables." />
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <link rel="preload" href="/fonts/bebasneue-regular-webfont.woff2" type="font/woff2" crossorigin as="font">
+  <link rel="preload" href="./font.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="./font.css">
+  </noscript>
   <title>Marvel Character Switcher</title>
 </head>
 
