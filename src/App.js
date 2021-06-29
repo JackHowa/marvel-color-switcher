@@ -3,7 +3,7 @@ import './vars.css'
 import styled from 'styled-components'
 import ThemeToggler from './ThemeToggle'
 import { SUPER_HERO_OPTIONS } from './constants'
-
+import Configurer from './components/Configurer'
 
 // setting up app state and dispatcher context
 const AppStateContext = React.createContext()
@@ -39,7 +39,7 @@ function AppProvider({ children }) {
 
 
 // custom hooks for context
-function useAppState() {
+export function useAppState() {
   const context = React.useContext(AppStateContext)
   if (!context) {
     throw new Error('useAppState must be used within the AppProvider')
@@ -80,10 +80,18 @@ const PrimaryText = styled.h1({
 function SuperHeroDisplayText() {
   const state = useAppState()
   const targetSuperHeroID = state.superHeroID
+  // todo: use object key
+  const targetSuperHeroObject = SUPER_HERO_OPTIONS.find(obj => obj.id === targetSuperHeroID)
 
   React.useEffect(() => {
-    document.body.dataset.theme = targetSuperHeroID
-  }, [targetSuperHeroID])
+    targetSuperHeroObject.cssVariables.forEach((cssVariableObject) => {
+      document.documentElement.style.setProperty(
+        cssVariableObject.propertyName,
+        cssVariableObject.value,
+      );
+    })
+    // refactor out obj diffing issues
+  }, [targetSuperHeroID, targetSuperHeroObject])
 
   return (
     <>
@@ -110,6 +118,7 @@ function App() {
       <div className="App">
         <SuperHeroDisplayTextContainer />
         <ThemeToggler />
+        <Configurer />
       </div>
     </AppProvider>
   );
