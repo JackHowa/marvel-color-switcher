@@ -22,6 +22,15 @@
 - [ ] Add other custom styles like font-height but whatever
 - [ ] Do something about data of who picks what
 
+## PT 2 CSS Var Picker 
+
+- [x] Remove hard-coded css of data scheme 
+- [x] Add live configurer
+- [ ] Change live configurer dynamically on state change
+- [ ] Determine input of variable based on something
+- [ ] Create your own color scheme and make your own character live
+- [ ] Do something about data of who picks what
+- [ ] Post to api of color scheme
 ## Colors
 
 ### Iron Man
