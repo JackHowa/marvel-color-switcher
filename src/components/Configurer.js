@@ -39,10 +39,9 @@ const Configurer = () => {
 
   return (
     <LowerFooter>
-      <label htmlFor="property-picker">
+      <label>
         Pick Target CSS Variable
         <select
-          id="property-picker"
           onChange={handleSetProperty}
           value={targetPropertyIndex}
         >
@@ -57,9 +56,9 @@ const Configurer = () => {
         </select>
       </label>
 
-      <label htmlFor="themes-property-picker">
+      <label>
+        Pick Color
         <input
-          id="themes-property-picker"
           type="color"
           value={targetPropertyValue}
           onChange={handleSetPropertyValue}
